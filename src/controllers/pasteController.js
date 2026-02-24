@@ -43,11 +43,6 @@ const createPaste = asyncHandler( async (req, res) => {
 //@access public
 const getPublicPastes = asyncHandler( async (req, res) => {
     const paste = await Paste.find({ isPublic: 1 }).setOptions({ sanitizeFilter: true });
-    if(paste.length == 0){
-        // error
-        res.status(404);
-        throw new Error("Paste not Found");
-    }
     res.status(200).json(paste)
 });
 
